@@ -11,7 +11,7 @@ namespace LethBot2._0
         public string text { get; set; }
         public int pick { get; set; }
 
-        public BlackCard()
+        public BlackCard() //custom ctor for deserialize
         {
             
         }
