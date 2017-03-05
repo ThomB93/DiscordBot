@@ -42,8 +42,17 @@ namespace LethBot2._0
                     await e.Channel.SendMessage($"{e.User.Name} greets {e.GetArg("GreetedPerson")}");
                     //sends a message to channel with the given text
                 });
+            commands.CreateCommand("insert")
+                .Description("Inserts to the DB")
+                .Parameter("title", ParameterType.Required)
+                .Do(async e =>
+                {
+                    DbConnect db = new DbConnect();
+                    db.Insert(e.GetArg(0).ToString(), e.Message.User.ToString(), DateTime.Today);
+                    await e.Channel.SendMessage("Movie succesfully added to DB");
+                });
 
-                commands.CreateCommand("categories")
+            commands.CreateCommand("categories")
                 .Description("Provides a list of categories with their ID.") //jeopardy
                 .Do(async e =>
                     {
