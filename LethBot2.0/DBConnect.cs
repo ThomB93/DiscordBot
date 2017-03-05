@@ -25,13 +25,13 @@ namespace LethBot2._0
         private void Initialize()
         {
             server = "localhost";
-            database = "discorddb";
+            database = "pointsdb";
             uid = "root";
             password = "password";
-            string connectionString = "server=localhost;user id=root;database=discorddb";
+            //server=localhost;user id=root;database=pointsdb
+            string connectionString = "server=" + server + ";user id=" + uid + ";database=" + database;
 
             connection = new MySqlConnection(connectionString);
-            
         }
 
         //open connection to database
@@ -65,6 +65,7 @@ namespace LethBot2._0
             try
             {
                 connection.Close();
+                Console.WriteLine("Connection was closed succesfully");
                 return true;
             }
             catch (MySqlException ex)
@@ -75,9 +76,9 @@ namespace LethBot2._0
         }
 
         //Insert statement
-        public void Insert(string title, string user, DateTime date)
+        public void Insert(string username)
         {
-            string query = $"INSERT INTO movie (MovieTitle, User, Date) VALUES ('{title}', '{user}', '{date.Year +"-" + date.Month.ToString("00") + "-" + date.Day.ToString("00")}')";
+            string query = $"INSERT INTO userpoints (username, points) VALUES ('{username}', 100)";
             Console.WriteLine(query);
             //open connection
             if (this.OpenConnection() == true)
@@ -88,7 +89,7 @@ namespace LethBot2._0
 
                 //Execute command
                 cmd.ExecuteNonQuery();
-                Console.WriteLine("Insert query executed.");
+                Console.WriteLine("Insert query succesfully executed.");
 
                 //close connection
                 this.CloseConnection();

@@ -42,14 +42,14 @@ namespace LethBot2._0
                     await e.Channel.SendMessage($"{e.User.Name} greets {e.GetArg("GreetedPerson")}");
                     //sends a message to channel with the given text
                 });
-            commands.CreateCommand("insert")
-                .Description("Inserts to the DB")
-                .Parameter("title", ParameterType.Required)
+            commands.CreateCommand("newUser")
+                .Description("Create a new user for the points DB")
+                .Parameter("username", ParameterType.Required)
                 .Do(async e =>
                 {
                     DbConnect db = new DbConnect();
-                    db.Insert(e.GetArg(0).ToString(), e.Message.User.ToString(), DateTime.Today);
-                    await e.Channel.SendMessage("Movie succesfully added to DB");
+                    db.Insert(e.GetArg(0).ToString());
+                    await e.Channel.SendMessage("User succesfully added to DB");
                 });
 
             commands.CreateCommand("categories")
