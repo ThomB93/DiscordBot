@@ -5,7 +5,7 @@ using Newtonsoft.Json;
 
 namespace LethBot2._0
 {
-    class BlackCard
+    public class BlackCard
     {
         private BlackCardsContainer blackCardsContainer;
         public string text { get; set; }
