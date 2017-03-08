@@ -42,8 +42,17 @@ namespace LethBot2._0
                     await e.Channel.SendMessage($"{e.User.Name} greets {e.GetArg("GreetedPerson")}");
                     //sends a message to channel with the given text
                 });
+            commands.CreateCommand("newUser")
+                .Description("Create a new user for the points DB")
+                .Parameter("username", ParameterType.Required)
+                .Do(async e =>
+                {
+                    DbConnect db = new DbConnect();
+                    db.Insert(e.GetArg(0).ToString());
+                    await e.Channel.SendMessage("User succesfully added to DB");
+                });
 
-                commands.CreateCommand("categories")
+            commands.CreateCommand("categories")
                 .Description("Provides a list of categories with their ID.") //jeopardy
                 .Do(async e =>
                     {
@@ -122,7 +131,7 @@ namespace LethBot2._0
                                     await f.Channel.SendMessage("Congratulations! " + winner.ToArray()[0].Name + " won this round.\n"
                                     + userName + " now has " + userScores[userName] + " points.");
                                 }
-                            } 
+                            }
                         };
                     });
 
@@ -130,7 +139,7 @@ namespace LethBot2._0
                     .Alias(new string[] { "question"}) 
                     .Description("Provides a random question.")
                     .Parameter("categoryId", ParameterType.Required)
-                    .Parameter("value", ParameterType.Required)
+                    .Parameter("value", ParameterType.Required) //100,200,400 etc
                     .Do(async e =>
                     {
                         JsonQuestion question = new JsonQuestion(e.GetArg(0), Convert.ToInt32(e.GetArg(1)));
@@ -143,7 +152,6 @@ namespace LethBot2._0
                         discord.MessageReceived += async (s, f) => {
                             // container.Questions[rand].answer
                             if (f.Message.Text == container.Questions[rand].answer) //if right answer
-                                // Echo the message back to the channel
                                 await f.Channel.SendMessage("Congratulations " + f.Message.User + "!");
                         };
                     });
