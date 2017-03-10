@@ -1,9 +1,6 @@
-﻿using System;
+﻿using MySql.Data.MySqlClient;
+using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using MySql.Data.MySqlClient;
 
 namespace LethBot2._0
 {
@@ -24,10 +21,10 @@ namespace LethBot2._0
         //Initialize values
         private void Initialize()
         {
-            server = "localhost";
-            database = "pointsdb";
-            uid = "root";
-            password = "password";
+            server = "mysql4.gear.host";
+            database = "testdb003";
+            uid = "testdb003";
+            password = "Pt84-7cau4?I";
             //server=localhost;user id=root;database=pointsdb
             string connectionString = "server=" + server + ";user id=" + uid + ";database=" + database;
 
