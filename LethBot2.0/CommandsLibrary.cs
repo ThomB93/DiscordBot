@@ -6,7 +6,7 @@ using Discord.Commands;
 
 namespace LethBot2._0
 {
-    class CommandsLibrary
+    public class CommandsLibrary
     {
         private DiscordClient discord;
         private List<string> categoriesList;

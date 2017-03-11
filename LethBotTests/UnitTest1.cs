@@ -1,5 +1,6 @@
 ﻿using System;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
+using LethBot2._0;
 
 namespace LethBotTests
 {
@@ -9,7 +10,12 @@ namespace LethBotTests
         [TestMethod]
         public void TestMethod1()
         {
-
+            //Arrange
+            BlackCard blackCard = new BlackCard();
+            //Act
+            BlackCard randomBlackCard = blackCard.GetBlackCard();
+            //Assert
+            Assert.IsNotNull(randomBlackCard);
         }
     }
 }

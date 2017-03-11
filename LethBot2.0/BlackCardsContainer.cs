@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace LethBot2._0
 {
-    class BlackCardsContainer
+    public class BlackCardsContainer
     {
         public List<BlackCard> blackCards { get; set; }
     }
