@@ -1,13 +1,14 @@
 ﻿using System;
-using Microsoft.VisualStudio.TestTools.UnitTesting;
 using LethBot2._0;
+using NUnit.Framework;
+using Moq;
 
 namespace LethBotTests
 {
-    [TestClass]
+    [TestFixture]
     public class UnitTest1
     {
-        [TestMethod]
+        [Test]
         public void TestMethod1()
         {
             //Arrange
@@ -16,6 +17,12 @@ namespace LethBotTests
             BlackCard randomBlackCard = blackCard.GetBlackCard();
             //Assert
             Assert.IsNotNull(randomBlackCard);
+        }
+
+        [Test]
+        public void MoqTest()
+        {
+            
         }
     }
 }

@@ -10,12 +10,15 @@ namespace LethBot2._0
     {
         static void Main(string[] args)
         {
+            DbConnect db = new DbConnect();
+            db.Insert("Sean", "Connery");
+
             //AsyncAwaitTestClass testClass = new AsyncAwaitTestClass();
             //Task task = new Task(testClass.ProcessDataAsync);
             //task.Start();
             //task.Wait();
 
-            MyBot bot = new MyBot();
+            //MyBot bot = new MyBot();
         }
     }
 }

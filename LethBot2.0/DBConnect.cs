@@ -18,15 +18,15 @@ namespace LethBot2._0
             Initialize(); //set up connection on creation
         }
 
-        //Initialize values
+        //Initialize values 
         private void Initialize()
         {
-            server = "mysql4.gear.host";
-            database = "testdb003";
-            uid = "testdb003";
-            password = "Pt84-7cau4?I";
+            server = "localhost";
+            database = "localhost(sakila)";
+            uid = "root";
+            password = "enejwak5042";
             //server=localhost;user id=root;database=pointsdb
-            string connectionString = "server=" + server + ";user id=" + uid + ";database=" + database;
+            string connectionString = "server=localhost;user id=root;database=sakila;Pwd=enejwak5042;";
 
             connection = new MySqlConnection(connectionString);
         }
@@ -73,9 +73,9 @@ namespace LethBot2._0
         }
 
         //Insert statement
-        public void Insert(string username)
+        public void Insert(string firstname, string lastname)
         {
-            string query = $"INSERT INTO userpoints (username, points) VALUES ('{username}', 100)";
+            string query = $"INSERT INTO `sakila`.`actor`(`first_name`,`last_name`) VALUES('" + firstname + "','" + lastname + "')";
             Console.WriteLine(query);
             //open connection
             if (this.OpenConnection() == true)
