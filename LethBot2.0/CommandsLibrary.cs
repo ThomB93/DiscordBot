@@ -86,7 +86,7 @@ namespace LethBot2._0
             commands.CreateCommand("cah")
                     .Description("Returns a random black card from CaH")
                     .Do(async e =>
-                    {
+                {
                         nextRound = false;
                         BlackCard bc = new BlackCard();
                         bc.LoadJson();
