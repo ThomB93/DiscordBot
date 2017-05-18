@@ -42,15 +42,15 @@ namespace LethBot2._0
                     await e.Channel.SendMessage($"{e.User.Name} greets {e.GetArg("GreetedPerson")}");
                     //sends a message to channel with the given text
                 });
-            /*commands.CreateCommand("newUser")
-                .Description("Create a new user for the points DB")
-                .Parameter("username", ParameterType.Required)
+            commands.CreateCommand("quote")
+                .Description("Stores a quote from the caller. !quote [text]")
+                .Parameter("text", ParameterType.Required)
                 .Do(async e =>
                 {
-                    DbConnect db = new DbConnect();
-                    db.Insert(e.GetArg(0).ToString());
-                    await e.Channel.SendMessage("User succesfully added to DB");
-                });*/
+                    DbConnect dbConnect = new DbConnect();
+                    dbConnect.InsertQuote(e.Message.User.ToString(), e.GetArg(1));
+                    await e.Channel.SendMessage("Quote was added to the database.");
+                });
 
             commands.CreateCommand("categories")
                 .Description("Provides a list of categories with their ID.") //jeopardy
@@ -137,7 +137,7 @@ namespace LethBot2._0
 
             commands.CreateCommand("trivia")
                     .Alias(new string[] { "question"}) 
-                    .Description("Provides a random question.")
+                    .Description("Provides a random question. !trivia [categoryId] [value]")
                     .Parameter("categoryId", ParameterType.Required)
                     .Parameter("value", ParameterType.Required) //100,200,400 etc
                     .Do(async e =>

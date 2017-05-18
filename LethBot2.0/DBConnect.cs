@@ -73,9 +73,9 @@ namespace LethBot2._0
         }
 
         //Insert statement
-        public void Insert(string firstname, string lastname)
+        public void InsertQuote(string user, string text)
         {
-            string query = $"INSERT INTO `sakila`.`actor`(`first_name`,`last_name`) VALUES('" + firstname + "','" + lastname + "')";
+            string query = $"INSERT INTO userquotes VALUES ('" + user + "','" + text + "')";
             Console.WriteLine(query);
             //open connection
             if (this.OpenConnection() == true)

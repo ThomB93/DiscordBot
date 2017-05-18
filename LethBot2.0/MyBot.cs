@@ -1,6 +1,6 @@
-﻿using System;
-using Discord;
+﻿using Discord;
 using Discord.Commands;
+using System;
 namespace LethBot2._0
 {
     public class MyBot
@@ -27,7 +27,7 @@ namespace LethBot2._0
 
             _discord.ExecuteAndWait(async () =>
             {
-                await _discord.Connect("Mjg0Njc2MzM2ODc3MDQzNzEy.C5HHZQ.PQuBiJ0OMnp4QVC3pt1SIwZelFc", TokenType.Bot);
+                await _discord.Connect("Mjg0Njc2MzM2ODc3MDQzNzEy.C6npmw.m9h0rlM_dNFbhxOUhZdlVdnugcc", TokenType.Bot);
             });
             
 
